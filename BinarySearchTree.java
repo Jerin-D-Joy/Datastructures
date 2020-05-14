@@ -1,3 +1,4 @@
+
 class Node {
 
     int data;
@@ -44,6 +45,20 @@ class BinarySearchTree {
         }
     }
 
+    public boolean search(int data) {
+        Node current = root;
+        while (current!=null) {
+            if (current.data == data) {
+                return true;
+            } else if (data < current.data) {
+                current = current.left;
+            } else {
+                current = current.right;
+            }
+        }
+        return false;
+    }
+
     //Parent is inside left and right
     public void inOrderTraversal(Node node) {
         if(node == null) {
@@ -73,22 +88,24 @@ class BinarySearchTree {
     }
 }
 
-public class BinarySearchTreeImpl {
+class BinarySearchTreeImpl {
 
     public static void main(String[] args) {
-        BinarySearchTree bst = new BinarySearchTree();
-        bst.insert(5);
-        bst.inOrderTraversal(bst.root);
-        bst.insert(6);
-        bst.insert(2);
-        bst.insert(9);
-        bst.insert(4);
-        System.out.println("\nIn order traversal");
-        bst.inOrderTraversal(bst.root);
-        System.out.println("\nPre order traversal");
-        bst.preOrderTraversal(bst.root);
-        System.out.println("\nPost order traversal");
-        bst.postOrderTraversal(bst.root);
+            BinarySearchTree bst = new BinarySearchTree();
+            bst.insert(5);
+            bst.inOrderTraversal(bst.root);
+            bst.insert(6);
+            bst.insert(2);
+            bst.insert(9);
+            bst.insert(4);
+            System.out.println("\nIn order traversal");
+            bst.inOrderTraversal(bst.root);
+            System.out.println("\nPre order traversal");
+            bst.preOrderTraversal(bst.root);
+            System.out.println("\nPost order traversal");
+            bst.postOrderTraversal(bst.root);
+            System.out.println("\nSearching for 9, found : " + bst.search(9));
+            System.out.println("\nSearching for 8, found : " + bst.search(8));
     }
 
 }
